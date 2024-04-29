@@ -1,0 +1,15 @@
+# /etc/systemd/system/clock.service
+
+[Unit]
+Description=Clock
+After=network.target
+
+[Service]
+WorkingDirectory=<path_to_repo>
+ExecStart=/usr/bin/python3 <path_to_repo>/clock.py
+ExecStopPost=/usr/bin/python3 <path_to_repo>/clear_display.py
+Restart=always
+User=<username>
+
+[Install]
+WantedBy=multi-user.target
